@@ -1,0 +1,60 @@
+$theme-colors: ( //
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan //
+);
+
+// 引数の1つ目と2つ目にマージしたいマップを指定
+$theme-colors: map-merge(( //
+    'twitter': #53A7E8,
+    'elgana': #e83929,
+    'elgana-light': #fcf7e6,
+    'facebook': #4064AD,
+    'tiktok': #F6305D //
+  ), $theme-colors);
+
+// テキストカラーを黒系にするか白系にするかを決める境界値
+$yiq-contrasted-threshold: 160;
+
+// border-*
+$i: 1;
+
+@while $i <=5 {
+  .border-#{$i} {
+    border-style: solid;
+    border-top-width: 0px+(1px * $i) !important;
+    border-right-width: 0px+(1px * $i) !important;
+    border-bottom-width: 0px+(1px * $i) !important;
+    border-left-width: 0px+(1px * $i) !important;
+  }
+
+  $i: $i+1;
+}
+
+// img-*
+$imgWH: 4;
+
+@while $imgWH <=72 {
+  .img-#{$imgWH} {
+    width: 0px+(1px * $imgWH) !important;
+    height: 0px+(1px * $imgWH) !important;
+  }
+
+  $imgWH: $imgWH+1;
+}
+
+// opc-*
+$opc: 1;
+
+@while $opc <=10 {
+  .opc-#{$opc} {
+    opacity: 0+(0.1 * $opc) !important;
+  }
+
+  $opc: $opc+1;
+}
