@@ -34,12 +34,14 @@ gulp.task('jsTask', function () {
             js.watchJs,
             js.ignore,
         ])
+        .pipe(sourcemaps.init())
         .pipe(concat('main.js'))
         .pipe(babel({
             presets: ["@babel/preset-env"]
         }))
         .pipe(uglify())
         .pipe(rename('main.min.js'))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(js.distDir));
 });
 
