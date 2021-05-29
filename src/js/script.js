@@ -21,12 +21,12 @@
     }
 
     check() {
-      if (currentNum === parseInt(this.el.textContent, 10)) {
+      if (this.game.getCurrentNum() === parseInt(this.el.textContent, 10)) {
         this.el.classList.add('pressed');
-        currentNum++;
+        this.game.addCurrentNum();
 
-        if (currentNum === 4) {
-          clearTimeout(timeoutId);
+        if (this.game.getCurrentNum() === 4) {
+          clearTimeout(this.game.getTimeoutId());
         }
       }
     }
@@ -89,6 +89,18 @@
       this.timeoutId = setTimeout(() => {
         this.runTimer();
       }, 10);
+    }
+
+    addCurrentNum() {
+      this.currentNum++;
+    }
+
+    getCurrentNum() {
+      return this.currentNum;
+    }
+
+    getTimeoutId() {
+      return this.timeoutId;
     }
   }
 
